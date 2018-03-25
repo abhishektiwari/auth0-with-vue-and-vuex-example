@@ -48,7 +48,7 @@ const actions = {
     commit('logout')
   },
 
-  handleAuthentication ({ state, commit }) {
+  handleAuthentication ({ commit }) {
     auth.handleAuthentication().then(authResult => {
       commit('authenticated', authResult)
     }).catch(err => {
