@@ -3,18 +3,21 @@
     <a href="#" class="navbar-brand">Auth0 with Vue and Vuex Example</a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <button class="btn btn-primary" @click='login()'>Sign In</button>
+        <button v-if="!authenticated" class="btn btn-primary" @click='login()'>Sign In</button>
+        <a v-if="authenticated" href="#" class='nav-link' @click='logout()'>Log Out</a>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'Navbar',
+  name: 'Header',
 
-  methods: mapActions(['login'])
+  methods: mapActions(['login', 'logout']),
+
+  computed: mapGetters(['authenticated'])
 }
 </script>
