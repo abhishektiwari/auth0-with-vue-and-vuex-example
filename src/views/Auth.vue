@@ -14,8 +14,12 @@ export default {
   methods: mapActions(['handleAuthentication']),
 
   data () {
-    this.handleAuthentication()
-    router.push({ name: 'home' })
+    this.handleAuthentication().then(() => {
+      router.push({ name: 'home' })
+    }).catch(err => {
+      // some meaningful error handling here ...
+      console.error(err)
+    })
 
     return {}
   }

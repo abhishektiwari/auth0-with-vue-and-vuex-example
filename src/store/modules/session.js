@@ -48,12 +48,9 @@ const actions = {
     commit('logout')
   },
 
-  handleAuthentication ({ commit }) {
-    auth.handleAuthentication().then(authResult => {
-      commit('authenticated', authResult)
-    }).catch(err => {
-      console.log(err)
-    })
+  async handleAuthentication ({ commit }) {
+    const authResult = await auth.handleAuthentication()
+    commit('authenticated', authResult)
   }
 }
 
